@@ -18,13 +18,14 @@ create a .env file in the server folder
 ```
 cd Server
 ```
-add add 
-PORT = 3001 // please provide the same port number
-CONNECTION_STRING = //your mongodb string here
-SECRET_TOKEN = //your token here
-NODE_ENV= production
-EMAIL_USERNAME= //your email to sent the reset password link
-EMAIL_PASSWORD= //your email password/app key here
+### ADD
+
+* PORT = 3001 // please provide the same port number
+* CONNECTION_STRING = //your mongodb string here
+* SECRET_TOKEN = //your token here
+* NODE_ENV= production
+* EMAIL_USERNAME= //your email to sent the reset password link
+* EMAIL_PASSWORD= //your email password/app key here
 
 ### Installing
 
@@ -63,6 +64,27 @@ npm run dev
 * [Nodemailer](https://nodemailer.com/) - Used for mail services
 * [jwt](https://jwt.io/) - For creating tokens
 
-## Authors
+## Ports
 
-* **Sooraj Lal M** - *Initial work* - [SOORAJ-006](https://github.com/SOORAJ-006)
+### Server Port
+
+* http://localhost:3001/users/register
+* http://localhost:3001/users/login
+* http://localhost:3001/users/forgetPassword
+* http://localhost:3001/users/reset-password/:resetToken
+
+### Client Port
+
+* http://localhost:5173/ - Login page
+* http://localhost:5173/forgetpassword - forget password page
+* http://localhost:5173//reset-password/:resetToken - reset password page
+* http://localhost:5173/dashboard - dashboard
+
+
+
+
+
+
+## Author
+
+* **Sooraj Lal M** - *GitHub* - [SOORAJ-006](https://github.com/SOORAJ-006)
