@@ -6,6 +6,13 @@ It is a simple project made for an interview machine test
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+## Clone
+
+```
+git init
+git clone https://github.com/SOORAJ-006/ConnectVerse
+```
+
 ### Prerequisites
 
 What things you need to install the software and how to install them
@@ -66,7 +73,7 @@ npm run dev
 
 ## Ports
 
-### Server Port
+### Server Port (post)
 
 * http://localhost:3001/users/register
 * http://localhost:3001/users/login
