@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState , useRef } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Joi from "joi";
@@ -19,6 +19,7 @@ const Login = () => {
     rememberMe: false,
   });
   const [errors, setErrors] = useState({});
+  const formRef = useRef();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -75,7 +76,8 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('DSDVCSD');
+  const formData = new FormData(formRef.current);
+
     
     // let isValid;
     // if (signState === "Sign In") {
@@ -92,9 +94,12 @@ const Login = () => {
       axios.post('http://localhost:3001/users/login', loginFormData, { withCredentials: true })
         .then(response => {
           console.log('Login successful:', response.data);
+          formRef.current.reset();
           navigate('/dashboard');
         })
         .catch(error => {
+          formRef.current.reset();
+          alert("Error during registration")
           console.error('Error during login:', error);
         });
     } else if (signState === "Sign Up") {
@@ -102,9 +107,13 @@ const Login = () => {
       axios.post("http://localhost:3001/users/register", signupFormData)
         .then((response) => {
           console.log("Registration successful:", response.data);
+          formRef.current.reset();
+          alert('registration successfull');
           setSignState("Sign In");
         })
         .catch((error) => {
+          formRef.current.reset();
+          alert("Error during registration")
           console.error("There was an error registering!", error);
         });
     }
@@ -117,7 +126,7 @@ const Login = () => {
   
         <div className="w-full max-w-md bg-black bg-opacity-75 rounded-lg p-8 md:p-10">
           <h2 className="text-3xl font-semibold mb-6 text-white text-center">{signState}</h2>
-          <form onSubmit={handleSubmit}>
+          <form ref={formRef} onSubmit={handleSubmit}>
             {signState === "Sign Up" && (
               <div className="mb-4">
                 <input
